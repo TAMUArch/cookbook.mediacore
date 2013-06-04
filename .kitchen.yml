@@ -1,0 +1,23 @@
+---
+driver_plugin: vagrant
+
+platforms:
+- name: ubuntu-12.04
+  driver_config:
+    box: canonical-ubuntu-12.04
+    box_url: http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
+    require_chef_omnibus: true
+    customize:
+      memory: 2048 
+suites:
+- name: default 
+  run_list: 
+  - recipe[mysql::server]
+  - recipe[mediacore]
+  attributes: {
+    "mysql": {
+      "server_root_password": "password",
+      "server_repl_password": "password",
+      "server_debian_password": "password"
+    }
+  }
