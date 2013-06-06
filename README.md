@@ -4,12 +4,14 @@ This cookbook installs and configures a mediacore server.
 
 Requirements
 ------------
+This cookbook has currently only been tested with Ubuntu 12.04LTS.
 
 #### cookbooks 
 - `python` - https://github.com/opscode-cookbooks/python 
 - `nginx` - https://github.com/opscode-cookbooks/nginx 
 - `supervisor` - https://github.com/opscode-cookbooks/supervisor 
 - `postgresql` - https://github.com/opscode-cookbooks/postgresql  
+- `database` - https://github.com/opscode-cookbooks/database
 
 Attributes
 ----------
