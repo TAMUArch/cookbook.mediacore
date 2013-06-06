@@ -17,6 +17,13 @@ use = egg:Paste#http
 host = <%= node[:mediacore][:host] %> 
 port = <%= node[:mediacore][:port] %> 
 
+[uwsgi]
+socket = <%= node[:mediacore][:uwsgi][:socket] %>
+master = <%= node[:mediacore][:uwsgi][:master] %>
+processes = <%= node[:mediacore][:uwsgi][:processes] %>
+home = <%= node[:mediacore][:venv] %>
+daemonize = <%= "#{node[:mediacore][:log_location]}/mediacore_uwsgi.log" %>
+
 [app:main]
 # Specify the database for SQLAlchemy to use
 sqlalchemy.url = <%= node[:mediacore][:sqlalchemy][:url] %> 
