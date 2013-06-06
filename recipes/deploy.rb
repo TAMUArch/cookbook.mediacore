@@ -62,23 +62,11 @@ template "#{node[:mediacore][:dir]}/deployment.ini" do
   source "deployment.ini.erb"
 end
 
-template "#{node[:mediacore][:dir]}/uwsgi.ini" do
-  action :create
-  owner node[:mediacore][:user]
-  group node[:mediacore][:group]
-  variables(
-    :socket => node[:mediacore][:uwsgi][:socket],
-    :master => "true",
-    :processes => "5",
-    :home => node[:mediacore][:venv],
-    :daemonize => "#{node[:mediacore][:log_location]}/mediacore_uwsgi.log"
-  )
-end
 include_recipe "supervisor"
 include_recipe "mediacore::web_server"
 
 supervisor_service "mediacore" do
-  command "uwsgi --emperor \"#{node[:mediacore][:dir]}/uwsgi.ini\" --die-on-term --uid #{node[:mediacore][:user]} --gid #{node[:mediacore][:group]} --logto #{node[:mediacore][:log_location]}/mediacore.log"
+  command "uwsgi --ini-paste #{node[:mediacore][:dir]}/deployment.ini --logto #{node[:mediacore][:log_location]}/mediacore.log"
   user node[:mediacore][:user]
   numprocs 1
   autostart true
