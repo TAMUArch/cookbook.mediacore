@@ -8,7 +8,7 @@ server {
   server_name <%= node[:mediacore][:web_server][:server_name] %>;
   client_max_body_size <%= node[:mediacore][:web_server][:client_max_body_size] %>;
 
-  root <%= "#{node[:mediacore][:dir]}/current/mediacore/public" %>;
+  root <%= "#{node[:mediacore][:dir]}/mediacore/public" %>;
   location ~* ^/(appearance)/ {
     root <%= node[:mediacore][:data_storage_dir] %>;
     break;
