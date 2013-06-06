@@ -1,4 +1,4 @@
-case node[:mediacore][:webserver][:type]
+case node[:mediacore][:web_server][:type]
 when "nginx"
   node.set[:nginx][:default_site_enabled] = false
   include_recipe "nginx"

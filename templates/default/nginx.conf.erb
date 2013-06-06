@@ -4,9 +4,9 @@
 #
 
 server {
-  listen <%= node[:mediacore][:webserver][:port] %>;
-  server_name <%= node[:mediacore][:webserver][:server_name] %>;
-  client_max_body_size <%= node[:mediacore][:webserver][:client_max_body_size] %>;
+  listen <%= node[:mediacore][:web_server][:port] %>;
+  server_name <%= node[:mediacore][:web_server][:server_name] %>;
+  client_max_body_size <%= node[:mediacore][:web_server][:client_max_body_size] %>;
 
   root <%= "#{node[:mediacore][:dir]}/current/mediacore/public" %>;
   location ~* ^/(appearance)/ {
