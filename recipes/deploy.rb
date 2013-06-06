@@ -1,4 +1,5 @@
 include_recipe "mediacore::packages"
+include_recipe "mediacore::web_server"
 
 [ node[:mediacore][:dir],
   node[:mediacore][:venv],
@@ -13,7 +14,7 @@ include_recipe "mediacore::packages"
 end
 
 git node[:mediacore][:dir] do
-  repo node[:mediacore][:git_repo]
+  repository node[:mediacore][:git_repo]
   reference "v#{node[:mediacore][:version]}"
   user node[:mediacore][:user]
   group node[:mediacore][:group]
@@ -27,13 +28,21 @@ python_virtualenv node[:mediacore][:venv] do
   action :create
 end
 
+template "#{node[:mediacore][:dir]}/deployment.ini" do
+  action :create
+  mode "0755"
+  owner node[:mediacore][:user]
+  group node[:mediacore][:group]
+  source "deployment.ini.erb"
+end
+
 python_pip "uwsgi" do
   action :install
 end
 
 case node[:mediacore][:db_type]
 when "postgresql"
-  include_recipe "postgresql::server"
+  include_recipe "postgresql::client"
   python_pip "psycopg2" do
     action :install
     virtualenv node[:mediacore][:venv]
@@ -55,15 +64,7 @@ execute "application_migration" do
   action :nothing
 end
 
-template "#{node[:mediacore][:dir]}/deployment.ini" do
-  action :create
-  owner node[:mediacore][:user]
-  group node[:mediacore][:group]
-  source "deployment.ini.erb"
-end
-
 include_recipe "supervisor"
-include_recipe "mediacore::web_server"
 
 supervisor_service "mediacore" do
   command "uwsgi --ini-paste #{node[:mediacore][:dir]}/deployment.ini --logto #{node[:mediacore][:log_location]}/mediacore.log"
