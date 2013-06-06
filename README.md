@@ -98,7 +98,7 @@ Attributes
     <td><tt>['mediacore']['sqlalchemy']['url']</tt></td>
     <td>String</td>
     <td>mediacore sqlalchemy url</td>
-    <td><tt>postgresql://mediacore:mediacore@localhost/mediacore?charset=utf8&use_unicode=0</tt></td>
+    <td><tt>postgresql://mediacore:mediacore@localhost/mediacore</tt></td>
   </tr>
   <tr>
     <td><tt>['mediacore']['sqlalchemy']['echo']</tt></td>
@@ -128,7 +128,7 @@ Attributes
     <td><tt>['mediacore']['data_storage_dir']</tt></td>
     <td>String</td>
     <td>where to store data files such as uploads</td>
-    <td><tt>/usr/local/mediacore/curent/data</tt></td>
+    <td><tt>/usr/local/mediacore/data</tt></td>
   </tr>
   <tr>
     <td><tt>['mediacore']['venv']</tt></td>
@@ -159,6 +159,18 @@ Attributes
     <td>String</td>
     <td>mediacore socket for uwsgi</td>
     <td><tt>/tmp/uwsgi-mediacore.sock</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mediacore']['uwsgi']['master']</tt></td>
+    <td>String</td>
+    <td>uwsgi is master</td>
+    <td><tt>true</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['mediacore']['uwsgi']['processes']</tt></td>
+    <td>String</td>
+    <td>number of uwsgi processes</td>
+    <td><tt>5</tt></td>
   </tr>
 </table>
 
