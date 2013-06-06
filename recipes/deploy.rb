@@ -2,7 +2,6 @@ include_recipe "mediacore::packages"
 include_recipe "mediacore::web_server"
 
 [ node[:mediacore][:dir],
-  node[:mediacore][:venv],
   node[:mediacore][:log_location]
 ].each do |dir|
   directory dir do
@@ -19,6 +18,13 @@ git node[:mediacore][:dir] do
   user node[:mediacore][:user]
   group node[:mediacore][:group]
   notifies :run,"execute[mediacore_setup]",:delayed
+end
+
+directory node[:mediacore][:venv] do
+  action :create
+  owner node[:mediacore][:user]
+  group node[:mediacore][:group]
+  mode "0775"
 end
 
 python_virtualenv node[:mediacore][:venv] do
