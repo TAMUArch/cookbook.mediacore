@@ -6,5 +6,4 @@ cookbook 'database'
 
 group :integration do
   cookbook 'mediacore', path: "."
-  cookbook 'mysql'
 end
