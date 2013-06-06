@@ -15,7 +15,7 @@ default[:mediacore][:db_user] = "mediacore"
 default[:mediacore][:db_pass] = "mediacore"
 default[:mediacore][:db_address] = "localhost"
 default[:mediacore][:database] = "mediacore"
-default[:mediacore][:sqlalchemy][:url] = "#{node[:mediacore][:db_type]}://#{node[:mediacore][:db_user]}:#{node[:mediacore][:db_pass]}@#{node[:mediacore][:db_address]}/#{node[:mediacore][:database]}?charset=utf8&use_unicode=0"
+default[:mediacore][:sqlalchemy][:url] = "#{node[:mediacore][:db_type]}://#{node[:mediacore][:db_user]}:#{node[:mediacore][:db_pass]}@#{node[:mediacore][:db_address]}/#{node[:mediacore][:database]}"
 default[:mediacore][:sqlalchemy][:echo] = "False" 
 default[:mediacore][:sqlalchemy][:pool_recycle] = "3600"
 
