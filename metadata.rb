@@ -11,6 +11,7 @@ version          '0.2.0'
   nginx
   supervisor
   postgresql
+  database
 ].each do |dep|
   depends dep
 end
