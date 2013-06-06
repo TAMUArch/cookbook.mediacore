@@ -45,7 +45,7 @@ execute "mediacore_setup" do
   cwd node[:mediacore][:dir]
   command "#{node[:mediacore][:venv]}/bin/python setup.py develop"
   action :nothing
-  notifies :run, "execute[application_migration", :delayed
+  notifies :run, "execute[application_migration]", :delayed
 end
 
 execute "application_migration" do
