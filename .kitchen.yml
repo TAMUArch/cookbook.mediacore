@@ -8,16 +8,16 @@ platforms:
     box_url: http://cloud-images.ubuntu.com/vagrant/precise/current/precise-server-cloudimg-amd64-vagrant-disk1.box
     require_chef_omnibus: true
     customize:
-      memory: 2048 
+      memory: 1024 
 suites:
 - name: default 
   run_list: 
-  - recipe[mysql::server]
+  - recipe[mediacore::database]
   - recipe[mediacore]
   attributes: {
-    "mysql": {
-      "server_root_password": "password",
-      "server_repl_password": "password",
-      "server_debian_password": "password"
+    "postgresql": {
+      "password": {
+        "postgres": "testkitchen"
+      }
     }
   }
