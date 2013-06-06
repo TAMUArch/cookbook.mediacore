@@ -22,11 +22,15 @@ default[:mediacore][:sqlalchemy][:pool_recycle] = "3600"
 # Basic Options
 default[:mediacore][:version] = "0.10.0"
 default[:mediacore][:dir] = "/usr/local/mediacore"
-default[:mediacore][:data_storage_dir] = "#{node[:mediacore][:dir]}/current/data"
+default[:mediacore][:data_storage_dir] = "#{node[:mediacore][:dir]}/data"
 default[:mediacore][:venv] = "#{node[:mediacore][:dir]}/venv"
 default[:mediacore][:git_repo] = "git://github.com/mediacore/mediacore-community.git"
 default[:mediacore][:log_location] = "/var/log/mediacore"
 
 # More advanced config options
 default[:mediacore][:plugins] = [ "*" ] 
+
+# uwsgi options
 default[:mediacore][:uwsgi][:socket] = "/tmp/uwsgi-mediacore.sock"
+default[:mediacore][:uwsgi][:master] = "true"
+default[:mediacore][:uwsgi][:processes] = 5
