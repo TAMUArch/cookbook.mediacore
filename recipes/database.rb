@@ -1,11 +1,14 @@
+include_recipe "database"
+
 case node[:mediacore][:db_type]
 when "postgresql"
   include_recipe "postgresql::server"
+  include_recipe "postgresql::ruby"
 
   connection_info = { :host => "localhost",
                       :port => node[:postgresql][:config][:port],
-                      :username => node[:mediacore][:db_user],
-                      :password => node[:mediacore][:db_pass] 
+                      :username => "postgres",
+                      :password => node[:postgresql][:password][:postgres]
                     } 
   
   postgresql_database node[:mediacore][:database] do
