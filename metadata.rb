@@ -7,12 +7,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.2.1'
 supports         'ubuntu', '= 12.04'
 
-%w[
-  python
-  nginx
-  supervisor
-  postgresql
-  database
-].each do |dep|
+%w{ python nginx supervisor postgresql database }.each do |dep|
   depends dep
 end
