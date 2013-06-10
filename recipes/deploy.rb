@@ -78,7 +78,6 @@ supervisor_service "mediacore" do
   numprocs 1
   autostart true
   autorestart true
-  exitcodes [ 0, 2 ]
   stopsignal "TERM"
   directory node[:mediacore][:dir]
 end
