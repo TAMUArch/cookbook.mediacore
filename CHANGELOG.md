@@ -1,5 +1,10 @@
 # CHANGELOG for mediacore
 
+## 0.2.2:
+
+* cleaned up duplicated uwsgi arguments
+* updated config to work correctly with supervisord
+
 ## 0.2.1: 
 
 * cookbook actually works now from scratch
