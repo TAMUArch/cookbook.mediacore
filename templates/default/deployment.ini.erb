@@ -22,7 +22,7 @@ socket = <%= node[:mediacore][:uwsgi][:socket] %>
 master = <%= node[:mediacore][:uwsgi][:master] %>
 processes = <%= node[:mediacore][:uwsgi][:processes] %>
 home = <%= node[:mediacore][:venv] %>
-daemonize = <%= "#{node[:mediacore][:log_location]}/mediacore_uwsgi.log" %>
+logto = <%= "#{node[:mediacore][:log_location]}/mediacore_uwsgi.log" %>
 
 [app:main]
 # Specify the database for SQLAlchemy to use
