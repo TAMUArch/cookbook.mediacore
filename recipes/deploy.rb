@@ -73,7 +73,7 @@ end
 include_recipe "supervisor"
 
 supervisor_service "mediacore" do
-  command "uwsgi --ini-paste #{node[:mediacore][:dir]}/deployment.ini --logto #{node[:mediacore][:log_location]}/mediacore.log"
+  command "uwsgi --ini-paste #{node[:mediacore][:dir]}/deployment.ini --vacuum --die-on-term"
   user node[:mediacore][:user]
   numprocs 1
   autostart true
