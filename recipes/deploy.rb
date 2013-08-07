@@ -17,6 +17,7 @@ git node[:mediacore][:dir] do
   reference "v#{node[:mediacore][:version]}"
   user node[:mediacore][:user]
   group node[:mediacore][:group]
+  reference "v#{node[:mediacore][:version]}"
   notifies :run,"execute[mediacore_setup]",:delayed
 end
 
